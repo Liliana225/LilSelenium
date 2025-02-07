@@ -14,18 +14,9 @@ driver.get(constants.ADRESS)
 
 elem = driver.find_elements(selenium.webdriver.common.by.By.NAME, "navigation-sidebar")
 
-
-
 elem1 = driver.find_element(selenium.webdriver.common.by.By.CLASS_NAME, "active")
 
-print(len(elem))
-
-#assert len(elem) ==5
-#assert elem1.text == "HOME"
-
 elem2 = driver.find_elements(selenium.webdriver.common.by.By.CLASS_NAME, "benefit-txt")
-print(len(elem2))
-
 
 driver.switch_to.frame("frame")
 
