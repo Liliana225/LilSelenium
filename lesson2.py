@@ -14,13 +14,13 @@ driver.get(constants.ADRESS)
 
 elem = driver.find_elements(selenium.webdriver.common.by.By.CSS_SELECTOR,  "[name='navigation-sidebar']")
 
-elem1 = driver.find_element(selenium.webdriver.common.by.By.CSS_SELECTOR, "[name = 'navigation-sidebar']")
+elem1 = driver.find_element(selenium.webdriver.common.by.By.CSS_SELECTOR, ".active")
 
-elem2 = driver.find_elements(selenium.webdriver.common.by.By.CSS_SELECTOR, "benefit-txt")
+elem2 = driver.find_elements(selenium.webdriver.common.by.By.CSS_SELECTOR, ".benefit-txt")
 
 driver.switch_to.frame("frame")
 
-elem3 = driver.find_element(selenium.webdriver.common.by.By.ID, "frame-button")
+elem3 = driver.find_element(selenium.webdriver.common.by.By.CSS_SELECTOR, "#frame-button")
 
 assert elem3.is_displayed()
 
