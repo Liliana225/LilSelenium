@@ -3,7 +3,7 @@ from time import sleep
 
 import selenium.webdriver.common.by
 from selenium import webdriver
-from selenium.webdriver.chrome.service import service, Service
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 import constants
@@ -14,7 +14,9 @@ driver.get(constants.ADRESS)
 
 elem = driver.find_elements(selenium.webdriver.common.by.By.CSS_SELECTOR,  "[name='navigation-sidebar']")
 
-elem1 = driver.find_element(selenium.webdriver.common.by.By.CSS_SELECTOR, ".active")
+elem1 = driver.find_element(selenium.webdriver.common.by.By.XPATH, "//div[@class = 'uui-header dark-gray']")
+
+assert elem1.is_displayed()
 
 elem2 = driver.find_elements(selenium.webdriver.common.by.By.CSS_SELECTOR, ".benefit-txt")
 
