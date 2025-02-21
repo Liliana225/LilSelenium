@@ -37,18 +37,18 @@ class WidgetsPage(BasePage):
 
         self.find_element(WidgetsPageLocators.GRAY_BUTTON, 5).click()
 
-    def get_log1(self):
+    def single_by_value(self):
         log1 = self.find_element(WidgetsPageLocators.LOG1, 5)
         colorLog = log1.get_attribute("value")
         return colorLog
 
-    def get_log2(self):
+    def get_log_brown(self):
         try:
             return self.find_element(WidgetsPageLocators.BROWN_BUTTON, 5).text
         except TimeoutException:
             return ""
 
-    def get_log3(self):
+    def get_log_gray(self):
         try:
             return self.find_element(WidgetsPageLocators.GRAY_BUTTON, 5).text
         except TimeoutException:

@@ -15,7 +15,7 @@ class ButtonsPageLocators():
     LOG_4 = (By.XPATH, "//p[text() = 'You have dynamically clicked ']")
 
 class ButtonsPage(BasePage):
-    def click_on_third_click(self, n:int):
+    def click_on_n_time(self, n:int):
         self.find_element(ButtonsPageLocators.BUTTONS, 5).click()
         for _ in range(n):
             self.find_element(ButtonsPageLocators.CLICK_ME, 5).click()
@@ -40,11 +40,3 @@ class ButtonsPage(BasePage):
             self.wait_for_to_be_clickable_on_element(ButtonsPageLocators.DYNAMIC_CLICK_ME, 5).click()
         log4 = self.find_element(ButtonsPageLocators.LOG_4, 5)
         return log4.text
-
-
-
-
-
-
-
-

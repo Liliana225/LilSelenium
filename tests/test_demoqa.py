@@ -37,18 +37,18 @@ def test_write_to_textbox(driverFixture):
     assert logs.text.__contains__(CurAddress)
     assert logs.text.__contains__(PerAddress)
 
-def test_choice_in_the_checkbox(driverFixture):
+def test_select_in_the_checkbox(driverFixture):
     checkbox_page = CheckBoxPage(driverFixture)
     main_page = MainPage(driverFixture)
     checkbox_page.go_to_site()
     main_page.go_to_elements()
-    checkbox_page.fill_in_the_checkbox()
+    checkbox_page.fill_checkboxes()
     filling = checkbox_page.get_filling()
     assert filling.text.__contains__("Commands")
     assert filling.text.__contains__("Workspace")
     assert filling.text.__contains__("Excel File.doc")
 
-def test_enybling_button(driverFixture):
+def test_selection_radiobutton(driverFixture):
     radiobutton_page = RadioButtonPage(driverFixture)
     main_page = MainPage(driverFixture)
     radiobutton_page.go_to_site()
@@ -68,7 +68,7 @@ def test_buttons(driverFixture):
     main_page = MainPage(driverFixture)
     buttons_page.go_to_site()
     main_page.go_to_elements()
-    text1 = buttons_page.click_on_third_click(third_click_count)
+    text1 = buttons_page.click_on_n_time(third_click_count)
     assert text1.__contains__(str(third_click_count))
     assert text1.__contains__("You have clicked")
     text2 = buttons_page.click_on_right_click(right_click_count)
@@ -92,14 +92,14 @@ def test_webtables(driverFixture):
     main_page = MainPage(driverFixture)
     webtables_page.go_to_site()
     main_page.go_to_elements()
-    webtables_page.add_new_employeer(first_name,full_name, age,email,salary,depart)
+    webtables_page.add_new_employee(first_name,full_name, age,email,salary,depart)
     assert webtables_page.get_logs()[0].__contains__(first_name)
     assert webtables_page.get_logs()[0].__contains__(full_name)
     assert webtables_page.get_logs()[1].__contains__(str(age))
     assert webtables_page.get_logs()[2].__contains__(email)
     assert webtables_page.get_logs()[3].__contains__(str(salary))
     assert webtables_page.get_logs()[4].__contains__(depart)
-    webtables_page.search_lil(name)
+    webtables_page.by_name(name)
     assert webtables_page.get_logs()[0].__contains__(name)
     webtables_page.delete_add()
     assert len(webtables_page.get_rows_in_table()) == 0
@@ -113,9 +113,9 @@ def test_widgets(driverFixture):
     widgets_page.go_to_site()
     main_page.go_to_widgets()
     widgets_page.search_a_single_color(color1[0])
-    assert widgets_page.get_log1() == color1[1]
+    assert widgets_page.single_by_value() == color1[1]
     widgets_page.search_a_brown_color(color2[0])
-    assert widgets_page.get_log2() == color2[1]
+    assert widgets_page.get_log_brown() == color2[1]
     widgets_page.search_a_gray_color(color3[0])
-    assert widgets_page.get_log3() == color3[1]
+    assert widgets_page.get_log_gray() == color3[1]
 

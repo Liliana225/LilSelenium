@@ -15,7 +15,7 @@ class CheckboxLocators():
     RESULT = (By.XPATH, "//div[@class = 'mt-6 p-4 bg-gray-50 rounded-lg']")
 
 class CheckBoxPage(BasePage):
-    def fill_in_the_checkbox(self):
+    def fill_checkboxes(self):
         self.find_element(CheckboxLocators.CHECK_BOX, 5).click()
         self.find_element(CheckboxLocators.EXPAND_ALL1, 5).click()
         self.find_element(CheckboxLocators.EXPAND_ALL2, 5).click()
