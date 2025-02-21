@@ -20,7 +20,6 @@ class WebTablesPageLocators():
 
 class WebTablesPage(BasePage):
     def add_new_employeer(self, first_name:str, last_name:str, age: int, email:str, salary:int, department:str):
-
         self.find_element(WebTablesPageLocators.WEB_TABLES, 5).click()
         self.find_element(WebTablesPageLocators.ADD_NEW_EMPLOYEE, 5).click()
 

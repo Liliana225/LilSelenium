@@ -16,7 +16,6 @@ class ButtonsPageLocators():
 
 class ButtonsPage(BasePage):
     def click_on_third_click(self, n:int):
-
         self.find_element(ButtonsPageLocators.BUTTONS, 5).click()
         for _ in range(n):
             self.find_element(ButtonsPageLocators.CLICK_ME, 5).click()
@@ -24,7 +23,6 @@ class ButtonsPage(BasePage):
         return log1.text
 
     def click_on_right_click(self, n:int):
-
         for _ in range(n):
             right_click_me = self.find_element(ButtonsPageLocators.RIGHT_CLICK_ME, 5)
             ActionChains(self.driver).context_click(right_click_me).perform()
@@ -32,14 +30,12 @@ class ButtonsPage(BasePage):
         return log2.text
 
     def click_on_double_click(self):
-
         double_click = self.find_element(ButtonsPageLocators.DOUBLE_CLICK_ME, 5)
         ActionChains(self.driver).double_click(double_click).perform()
         log3 = self.find_element(ButtonsPageLocators.LOG_3, 5)
         return log3.text
 
     def click_on_dynamic_click(self, n: int):
-
         for _ in range(n):
             self.wait_for_to_be_clickable_on_element(ButtonsPageLocators.DYNAMIC_CLICK_ME, 5).click()
         log4 = self.find_element(ButtonsPageLocators.LOG_4, 5)

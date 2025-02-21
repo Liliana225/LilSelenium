@@ -1,7 +1,5 @@
 import time
-
 from selenium.webdriver.common.by import By
-
 from demoqa_pages.base_page import BasePage
 from demoqa_pages.page_object.main_page import MainPage
 from selenium.webdriver.common.keys import Keys
@@ -17,7 +15,6 @@ class TextBoxPageLocators():
 
 class TextBoxPage(BasePage):
     def write_to_textbox(self, fullname: str, myemail: str, curaddress: str, peraddress: str):
-
         self.find_element(TextBoxPageLocators.TEXT_BOX, 5).click()
 
         full_name = self.find_element(TextBoxPageLocators.FULL_NAME, 5)
@@ -37,7 +34,6 @@ class TextBoxPage(BasePage):
         self.scroll_to_bottom(TextBoxPageLocators.SUBMIT)
         submit = self.wait_for_to_be_clickable_on_element(TextBoxPageLocators.SUBMIT, 5)
         submit.click()
-
         return
 
     def get_logs(self):

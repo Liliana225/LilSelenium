@@ -16,7 +16,6 @@ class CheckboxLocators():
 
 class CheckBoxPage(BasePage):
     def fill_in_the_checkbox(self):
-
         self.find_element(CheckboxLocators.CHECK_BOX, 5).click()
         self.find_element(CheckboxLocators.EXPAND_ALL1, 5).click()
         self.find_element(CheckboxLocators.EXPAND_ALL2, 5).click()
@@ -26,7 +25,6 @@ class CheckBoxPage(BasePage):
         self.find_element(CheckboxLocators.WORK_SPACE, 5).click()
         self.scroll_to_bottom(CheckboxLocators.EXEL_FILE_DOC)
         self.find_element(CheckboxLocators.EXEL_FILE_DOC, 5).click()
-
         return
 
     def get_filling(self):

@@ -12,11 +12,9 @@ class WidgetsPageLocators():
     BROWN_BUTTON = (By.XPATH, "//span[text() = 'Brown']")
     GRAY_BUTTON = (By.XPATH, "//span[text() = 'Gray']")
     LOG1 = (By.XPATH, "//input[@value = 'Blue']")
-    #LOG2 = (By.XPATH, "//h2[text() = 'Multiple Colors Selection']/../div/div/div/span")
 
 class WidgetsPage(BasePage):
     def search_a_single_color(self, color1: str):
-
         self.find_element(WidgetsPageLocators.AUTO_COMPLETE, 5).click()
 
         blue = self.find_element(WidgetsPageLocators.SINGLE_SEARCH, 5)
