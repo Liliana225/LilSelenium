@@ -4,7 +4,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class BasePage:
-
     def __init__(self, driver):
         self.driver = driver
         self.base_url = "https://demoqa.ru/qa-auto"
@@ -29,7 +28,3 @@ class BasePage:
         elem = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
         mapp = elem.location_once_scrolled_into_view
         return
-
-
-
-

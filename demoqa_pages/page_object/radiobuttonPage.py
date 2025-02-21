@@ -9,7 +9,6 @@ class RadioButtonLocators():
     RESULT = (By.XPATH, "//span[@class = 'text-[#1565c0] font-medium capitalize']")
 
 class RadioButtonPage(BasePage):
-
     def click_on_radio_button(self):
 
         self.find_element(RadioButtonLocators.RADIO_BUTTON, 5).click()

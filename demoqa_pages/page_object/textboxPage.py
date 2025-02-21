@@ -6,7 +6,6 @@ from demoqa_pages.base_page import BasePage
 from demoqa_pages.page_object.main_page import MainPage
 from selenium.webdriver.common.keys import Keys
 
-
 class TextBoxPageLocators():
     TEXT_BOX = (By.XPATH, "//div[@class = 'flex items-center gap-3']")
     FULL_NAME = (By.XPATH, "//input[@id = 'fullName']")
@@ -14,11 +13,9 @@ class TextBoxPageLocators():
     CURRENT_ADDRESS = (By.XPATH, "//textarea[@id = 'currentAddress']")
     PERMANENT_ADDRESS = (By.XPATH, "//textarea[@id = 'permanentAddress']")
     SUBMIT = (By.XPATH, "//form[@class = 'space-y-6']/div[5]/button")
-    #SUBMIT = (By.XPATH, "//button[@type = 'submit']")
     LOGS = (By.XPATH, "//div[@class = 'mt-8 p-4 bg-gray-50 rounded-lg']")
 
 class TextBoxPage(BasePage):
-
     def write_to_textbox(self, fullname: str, myemail: str, curaddress: str, peraddress: str):
 
         self.find_element(TextBoxPageLocators.TEXT_BOX, 5).click()
@@ -46,4 +43,3 @@ class TextBoxPage(BasePage):
     def get_logs(self):
         logs = self.find_element(TextBoxPageLocators.LOGS, 5)
         return logs
-

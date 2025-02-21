@@ -19,7 +19,6 @@ class WebTablesPageLocators():
     ROWS_IN_TABLE = (By.XPATH, "//tbody[@class = 'bg-white divide-y divide-gray-200']/*")
 
 class WebTablesPage(BasePage):
-
     def add_new_employeer(self, first_name:str, last_name:str, age: int, email:str, salary:int, department:str):
 
         self.find_element(WebTablesPageLocators.WEB_TABLES, 5).click()
@@ -46,7 +45,6 @@ class WebTablesPage(BasePage):
         self.find_element(WebTablesPageLocators.ADD, 5).click()
 
     def get_logs(self):
-
         logs = self.find_elements(WebTablesPageLocators.LOGS, 5)
         logs_text = []
         for x in logs:
@@ -54,7 +52,6 @@ class WebTablesPage(BasePage):
         return logs_text
 
     def search_lil(self, name: str):
-
         search = self.find_element(WebTablesPageLocators.SEARCH,5)
         search.click()
         search.send_keys(name)
@@ -68,6 +65,3 @@ class WebTablesPage(BasePage):
             return self.find_elements(WebTablesPageLocators.ROWS_IN_TABLE, 5)
         except TimeoutException:
             return []
-
-
-

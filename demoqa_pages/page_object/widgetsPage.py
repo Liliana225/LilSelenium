@@ -4,7 +4,6 @@ from selenium.webdriver.common.by import By
 from demoqa_pages.base_page import BasePage
 
 class WidgetsPageLocators():
-
     AUTO_COMPLETE = (By.XPATH, "//h3[text() = 'Auto Complete']")
     SINGLE_SEARCH = (By.XPATH, "//input[@placeholder = 'Type a color...']")
     MILTIPLE_SEARCH = (By.XPATH, "//input[@placeholder = 'Type colors...']")
@@ -16,7 +15,6 @@ class WidgetsPageLocators():
     #LOG2 = (By.XPATH, "//h2[text() = 'Multiple Colors Selection']/../div/div/div/span")
 
 class WidgetsPage(BasePage):
-
     def search_a_single_color(self, color1: str):
 
         self.find_element(WidgetsPageLocators.AUTO_COMPLETE, 5).click()
@@ -28,7 +26,6 @@ class WidgetsPage(BasePage):
         self.find_element(WidgetsPageLocators.BLUE_BUTTON, 5).click()
 
     def search_a_brown_color(self, color2: str):
-
         brown = self.find_element(WidgetsPageLocators.MILTIPLE_SEARCH, 5)
         brown.click()
         brown.send_keys(color2)
@@ -36,7 +33,6 @@ class WidgetsPage(BasePage):
         self.find_element(WidgetsPageLocators.BROWN_BUTTON, 5).click()
 
     def search_a_gray_color(self, color3: str):
-
         grey = self.find_element(WidgetsPageLocators.MULTIPLE_SEARCH_FIELD, 5)
         grey.click()
         grey.send_keys(color3)
@@ -44,24 +40,18 @@ class WidgetsPage(BasePage):
         self.find_element(WidgetsPageLocators.GRAY_BUTTON, 5).click()
 
     def get_log1(self):
-
         log1 = self.find_element(WidgetsPageLocators.LOG1, 5)
         colorLog = log1.get_attribute("value")
         return colorLog
 
     def get_log2(self):
-
         try:
             return self.find_element(WidgetsPageLocators.BROWN_BUTTON, 5).text
         except TimeoutException:
             return ""
 
     def get_log3(self):
-
         try:
             return self.find_element(WidgetsPageLocators.GRAY_BUTTON, 5).text
         except TimeoutException:
             return ""
-
-
-
