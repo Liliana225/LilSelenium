@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from demoqa_pages.base_page import BasePage
@@ -15,6 +16,7 @@ class CheckboxLocators():
     RESULT = (By.XPATH, "//div[@class = 'mt-6 p-4 bg-gray-50 rounded-lg']")
 
 class CheckBoxPage(BasePage):
+    @allure.step("Заполнить checkbox")
     def fill_checkboxes(self):
         self.find_element(CheckboxLocators.CHECK_BOX, 5).click()
         self.find_element(CheckboxLocators.EXPAND_ALL1, 5).click()
@@ -27,6 +29,8 @@ class CheckBoxPage(BasePage):
         self.find_element(CheckboxLocators.EXEL_FILE_DOC, 5).click()
         return
 
+    @allure.step("Получить заполнения")
     def get_filling(self):
+        self.driver
         filling = self.find_element(CheckboxLocators.RESULT, 5)
         return filling

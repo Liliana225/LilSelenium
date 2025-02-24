@@ -1,5 +1,7 @@
 from re import search
 
+import allure
+
 import constants
 from base_page.base_page import BasePage
 from selenium.webdriver.common.by import By
@@ -27,7 +29,7 @@ class LoginPageLocators:
  PROFILE_PHOTO = (By.XPATH, "//div[@class = 'profile-photo']")
 
 class LoginPage(BasePage):
-
+    @allure.step("Залогониться")
     def login(self, login:str, password:str):
         self.find_element(LoginPageLocators.PROFILE_PHOTO).click()
         login_field = self.find_element(LoginPageLocators.NAME, 5)
@@ -46,6 +48,7 @@ class LoginPage(BasePage):
         return (self.find_element(LoginPageLocators.LOGOUT).is_displayed() and
                 self.find_element(LoginPageLocators.USERNAME).text == constants.HAME)
 
+    @allure.step("Проверить элементы")
     def checkStartElements(self):
         find_element = self.find_element(LoginPageLocators.NAVIGATION_BAR, 5)
         find_element1 = self.find_element(LoginPageLocators.ACTIVE, 5)
@@ -56,12 +59,14 @@ class LoginPage(BasePage):
                 everyElementIsDisplayed = False
         return find_element.is_displayed() and find_element1.is_displayed() and everyElementIsDisplayed
 
+    @allure.step("Проверить фрейм")
     def checkFrame(self):
         #self.switch_to_frame("frame")
         checkFrame = self.find_element(LoginPageLocators.FRAME_BUTTON, 5)
         #self.switch_to_default()
         return checkFrame.is_displayed()
 
+    @allure.step("Перейти в раздел elements page")
     def goToElementsPage(self):
         self.find_element(LoginPageLocators.SERVICE, 5).click()
         self.find_element(LoginPageLocators.DIFFERENT_ELEMENTS, 5).click()

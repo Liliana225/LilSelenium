@@ -1,5 +1,7 @@
 from re import search
 
+import allure
+
 import constants
 from base_page.base_page import BasePage
 from selenium.webdriver.common.by import By
@@ -9,8 +11,7 @@ from pages.loginPage import LoginPageLocators
 
 
 class ElementsPage(BasePage):
-
-
+    @allure.step("Отметить элементы")
     def markElements(self):
         label_checkbox = self.find_elements(LoginPageLocators.LABELCHECKBOX, 5)
         for x in label_checkbox:
@@ -25,7 +26,7 @@ class ElementsPage(BasePage):
             if x.text == "Yellow":
                 x.click()
 
-
+    @allure.step("Проверить элементы")
     def check_elements(self):
         info_panel = self.find_element(LoginPageLocators.INFO_PANEL, 5)
         assert info_panel.is_displayed()
@@ -34,6 +35,7 @@ class ElementsPage(BasePage):
         assert info_panel.text.__contains__("Selen")
         assert info_panel.text.__contains__("Yellow")
 
+    @allure.step("Проверить нужный ли сайт открыт")
     def isOpenedNow(self):
         return self.driver.current_url == CURRENT_URL
 

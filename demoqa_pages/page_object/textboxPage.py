@@ -1,4 +1,6 @@
 import time
+
+import allure
 from selenium.webdriver.common.by import By
 from demoqa_pages.base_page import BasePage
 from demoqa_pages.page_object.main_page import MainPage
@@ -13,7 +15,9 @@ class TextBoxPageLocators():
     SUBMIT = (By.XPATH, "//form[@class = 'space-y-6']/div[5]/button")
     LOGS = (By.XPATH, "//div[@class = 'mt-8 p-4 bg-gray-50 rounded-lg']")
 
+
 class TextBoxPage(BasePage):
+    @allure.step("Заполнить textbox")
     def write_to_textbox(self, fullname: str, myemail: str, curaddress: str, peraddress: str):
         self.find_element(TextBoxPageLocators.TEXT_BOX, 5).click()
 

@@ -1,3 +1,4 @@
+import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 
@@ -14,6 +15,7 @@ class WidgetsPageLocators():
     LOG1 = (By.XPATH, "//input[@value = 'Blue']")
 
 class WidgetsPage(BasePage):
+    @allure.step("Найти один цвет")
     def search_a_single_color(self, color1: str):
         self.find_element(WidgetsPageLocators.AUTO_COMPLETE, 5).click()
 
@@ -23,6 +25,7 @@ class WidgetsPage(BasePage):
 
         self.find_element(WidgetsPageLocators.BLUE_BUTTON, 5).click()
 
+    @allure.step("Найти коричневый цвет")
     def search_a_brown_color(self, color2: str):
         brown = self.find_element(WidgetsPageLocators.MILTIPLE_SEARCH, 5)
         brown.click()
@@ -30,6 +33,7 @@ class WidgetsPage(BasePage):
 
         self.find_element(WidgetsPageLocators.BROWN_BUTTON, 5).click()
 
+    @allure.step("Найти серый цвет")
     def search_a_gray_color(self, color3: str):
         grey = self.find_element(WidgetsPageLocators.MULTIPLE_SEARCH_FIELD, 5)
         grey.click()
@@ -37,17 +41,20 @@ class WidgetsPage(BasePage):
 
         self.find_element(WidgetsPageLocators.GRAY_BUTTON, 5).click()
 
+    @allure.step("Локатор поиска одного цвета")
     def single_by_value(self):
         log1 = self.find_element(WidgetsPageLocators.LOG1, 5)
         colorLog = log1.get_attribute("value")
         return colorLog
 
+    @allure.step("Получить лог коричневого цвета")
     def get_log_brown(self):
         try:
             return self.find_element(WidgetsPageLocators.BROWN_BUTTON, 5).text
         except TimeoutException:
             return ""
 
+    @allure.step("Получить лог серого цвета")
     def get_log_gray(self):
         try:
             return self.find_element(WidgetsPageLocators.GRAY_BUTTON, 5).text

@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 
 from demoqa_pages.base_page import BasePage
@@ -15,6 +16,7 @@ class ButtonsPageLocators():
     LOG_4 = (By.XPATH, "//p[text() = 'You have dynamically clicked ']")
 
 class ButtonsPage(BasePage):
+    @allure.step("Клинуть по кнопке n-раз")
     def click_on_n_time(self, n:int):
         self.find_element(ButtonsPageLocators.BUTTONS, 5).click()
         for _ in range(n):
@@ -22,6 +24,7 @@ class ButtonsPage(BasePage):
         log1 = self.find_element(ButtonsPageLocators.LOG_1, 5)
         return log1.text
 
+    @allure.step("Клинуть правой кнопкой мыши n-раз")
     def click_on_right_click(self, n:int):
         for _ in range(n):
             right_click_me = self.find_element(ButtonsPageLocators.RIGHT_CLICK_ME, 5)
@@ -29,12 +32,14 @@ class ButtonsPage(BasePage):
         log2 = self.find_element(ButtonsPageLocators.LOG_2, 5)
         return log2.text
 
+    @allure.step("Клинуть по кнопке дважды n-раз")
     def click_on_double_click(self):
         double_click = self.find_element(ButtonsPageLocators.DOUBLE_CLICK_ME, 5)
         ActionChains(self.driver).double_click(double_click).perform()
         log3 = self.find_element(ButtonsPageLocators.LOG_3, 5)
         return log3.text
 
+    @allure.step("Клинуть по динамической кнопке n-раз")
     def click_on_dynamic_click(self, n: int):
         for _ in range(n):
             self.wait_for_to_be_clickable_on_element(ButtonsPageLocators.DYNAMIC_CLICK_ME, 5).click()

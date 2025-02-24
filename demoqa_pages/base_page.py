@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
@@ -15,6 +16,7 @@ class BasePage:
     def find_elements(self, locator, time):
         return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator))
 
+    @allure.step("Открыть сайт")
     def go_to_site(self):
         return self.driver.get(self.base_url)
 
