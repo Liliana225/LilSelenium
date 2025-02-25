@@ -16,10 +16,14 @@ class BasePage:
 
     @allure.step("Открыть сайт")
     def go_to_site(self):
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return self.driver.get(self.base_url)
 
     @allure.step("Перейти во фрейм")
     def switch_to_frame(self, frame: str):
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return self.driver.switch_to.frame(frame)
 
     @allure.step("Выйти из фрейма")

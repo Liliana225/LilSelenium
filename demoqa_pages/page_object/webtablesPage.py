@@ -44,6 +44,8 @@ class WebTablesPage(BasePage):
         mydepartment.send_keys(department)
 
         self.find_element(WebTablesPageLocators.ADD, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
 
     @allure.step("Получить лог")
     def get_logs(self):
@@ -58,11 +60,15 @@ class WebTablesPage(BasePage):
         search = self.find_element(WebTablesPageLocators.SEARCH,5)
         search.click()
         search.send_keys(name)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return search.text
 
     @allure.step("Удалить добавленные данные")
     def delete_add(self):
         self.find_element(WebTablesPageLocators.DELETE, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
 
     @allure.step("Получить строки в таблице")
     def get_rows_in_table(self) ->[] :

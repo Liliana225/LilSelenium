@@ -22,6 +22,8 @@ class ButtonsPage(BasePage):
         for _ in range(n):
             self.find_element(ButtonsPageLocators.CLICK_ME, 5).click()
         log1 = self.find_element(ButtonsPageLocators.LOG_1, 5)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return log1.text
 
     @allure.step("Клинуть правой кнопкой мыши n-раз")
@@ -30,6 +32,8 @@ class ButtonsPage(BasePage):
             right_click_me = self.find_element(ButtonsPageLocators.RIGHT_CLICK_ME, 5)
             ActionChains(self.driver).context_click(right_click_me).perform()
         log2 = self.find_element(ButtonsPageLocators.LOG_2, 5)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return log2.text
 
     @allure.step("Клинуть по кнопке дважды n-раз")
@@ -37,6 +41,8 @@ class ButtonsPage(BasePage):
         double_click = self.find_element(ButtonsPageLocators.DOUBLE_CLICK_ME, 5)
         ActionChains(self.driver).double_click(double_click).perform()
         log3 = self.find_element(ButtonsPageLocators.LOG_3, 5)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return log3.text
 
     @allure.step("Клинуть по динамической кнопке n-раз")
@@ -44,4 +50,6 @@ class ButtonsPage(BasePage):
         for _ in range(n):
             self.wait_for_to_be_clickable_on_element(ButtonsPageLocators.DYNAMIC_CLICK_ME, 5).click()
         log4 = self.find_element(ButtonsPageLocators.LOG_4, 5)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return log4.text

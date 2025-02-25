@@ -70,6 +70,8 @@ class LoginPage(BasePage):
     def goToElementsPage(self):
         self.find_element(LoginPageLocators.SERVICE, 5).click()
         self.find_element(LoginPageLocators.DIFFERENT_ELEMENTS, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return
 
 

@@ -24,6 +24,8 @@ class WidgetsPage(BasePage):
         blue.send_keys(color1)
 
         self.find_element(WidgetsPageLocators.BLUE_BUTTON, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
 
     @allure.step("Найти коричневый цвет")
     def search_a_brown_color(self, color2: str):
@@ -32,6 +34,8 @@ class WidgetsPage(BasePage):
         brown.send_keys(color2)
 
         self.find_element(WidgetsPageLocators.BROWN_BUTTON, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
 
     @allure.step("Найти серый цвет")
     def search_a_gray_color(self, color3: str):
@@ -40,6 +44,8 @@ class WidgetsPage(BasePage):
         grey.send_keys(color3)
 
         self.find_element(WidgetsPageLocators.GRAY_BUTTON, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
 
     @allure.step("Локатор поиска одного цвета")
     def single_by_value(self):

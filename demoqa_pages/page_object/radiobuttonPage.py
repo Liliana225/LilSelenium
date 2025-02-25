@@ -13,6 +13,8 @@ class RadioButtonPage(BasePage):
     @allure.step("Кликнуть по кнопке radiobutton")
     def click_on_radio_button(self):
         self.find_element(RadioButtonLocators.RADIO_BUTTON, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return
 
     @allure.step("Кликнуть по кнопке no")
@@ -28,4 +30,6 @@ class RadioButtonPage(BasePage):
     @allure.step("Получить логи")
     def get_logs(self):
         logs = self.find_element(RadioButtonLocators.RESULT, 5)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return logs

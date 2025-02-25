@@ -31,6 +31,7 @@ class CheckBoxPage(BasePage):
 
     @allure.step("Получить заполнения")
     def get_filling(self):
-        self.driver
         filling = self.find_element(CheckboxLocators.RESULT, 5)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return filling

@@ -42,4 +42,6 @@ class TextBoxPage(BasePage):
 
     def get_logs(self):
         logs = self.find_element(TextBoxPageLocators.LOGS, 5)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return logs
