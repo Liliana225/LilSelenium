@@ -1,5 +1,6 @@
 import time
 
+import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -25,6 +26,11 @@ def driverFixture():
     yield driver
     driver.quit()
 
+@allure.severity(allure.severity_level.NORMAL)
+@allure.epic("Тесты demoqa.ru")
+@allure.story("Тесты elements")
+@allure.feature("Тесты textbox")
+@allure.description("Тест проверяет корректность работы раздела textbox")
 def test_write_to_textbox(driverFixture):
     textbox_page = TextBoxPage(driverFixture)
     main_page = MainPage(driverFixture)
@@ -37,6 +43,11 @@ def test_write_to_textbox(driverFixture):
     assert logs.text.__contains__(CurAddress)
     assert logs.text.__contains__(PerAddress)
 
+@allure.severity(allure.severity_level.CRITICAL)
+@allure.epic("Тесты demoqa.ru")
+@allure.story("Тесты elements")
+@allure.feature("Тесты checkbox")
+@allure.description("Тест проверяет корректность работы раздела checkbox")
 def test_select_in_the_checkbox(driverFixture):
     checkbox_page = CheckBoxPage(driverFixture)
     main_page = MainPage(driverFixture)
@@ -48,6 +59,11 @@ def test_select_in_the_checkbox(driverFixture):
     assert filling.text.__contains__("Workspace")
     assert filling.text.__contains__("Excel File.doc")
 
+@allure.severity(allure.severity_level.NORMAL)
+@allure.epic("Тесты demoqa.ru")
+@allure.story("Тесты elements")
+@allure.feature("Тесты radiobutton")
+@allure.description("Тест проверяет корректность работы раздела radiobutton")
 def test_selection_radiobutton(driverFixture):
     radiobutton_page = RadioButtonPage(driverFixture)
     main_page = MainPage(driverFixture)
@@ -59,6 +75,11 @@ def test_selection_radiobutton(driverFixture):
     logs = radiobutton_page.get_logs()
     assert logs.text.__contains__("Impressive")
 
+@allure.severity(allure.severity_level.MINOR)
+@allure.epic("Тесты demoqa.ru")
+@allure.story("Тесты elements")
+@allure.feature("Тесты buttons")
+@allure.description("Тест проверяет корректность работы раздела buttons")
 def test_buttons(driverFixture):
     third_click_count = 3
     right_click_count = 2
@@ -80,6 +101,11 @@ def test_buttons(driverFixture):
     assert text4.__contains__(str(dynamic_click_count))
     assert text4.__contains__("You have dynamically clicked")
 
+@allure.severity(allure.severity_level.MINOR)
+@allure.epic("Тесты demoqa.ru")
+@allure.story("Тесты elements")
+@allure.feature("Тесты webtables")
+@allure.description("Тест проверяет корректность работы раздела webtables")
 def test_webtables(driverFixture):
     first_name = "li"
     full_name = "ah"
@@ -104,6 +130,12 @@ def test_webtables(driverFixture):
     webtables_page.delete_add()
     assert len(webtables_page.get_rows_in_table()) == 0
 
+
+@allure.severity(allure.severity_level.MINOR)
+@allure.epic("Тесты demoqa.ru")
+@allure.story("Тесты widgets")
+@allure.feature("Тесты widgets")
+@allure.description("Тест проверяет корректность работы раздела widgets")
 def test_widgets(driverFixture):
     color1 = ("bl","Blue")
     color2 = ("b", "Brown")

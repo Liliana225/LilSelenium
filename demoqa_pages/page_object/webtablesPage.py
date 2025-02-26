@@ -1,3 +1,4 @@
+import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 
@@ -19,6 +20,7 @@ class WebTablesPageLocators():
     ROWS_IN_TABLE = (By.XPATH, "//tbody[@class = 'bg-white divide-y divide-gray-200']/*")
 
 class WebTablesPage(BasePage):
+    @allure.step("Добавить нового работника")
     def add_new_employee(self, first_name:str, last_name:str, age: int, email:str, salary:int, department:str):
         self.find_element(WebTablesPageLocators.WEB_TABLES, 5).click()
         self.find_element(WebTablesPageLocators.ADD_NEW_EMPLOYEE, 5).click()
@@ -42,7 +44,10 @@ class WebTablesPage(BasePage):
         mydepartment.send_keys(department)
 
         self.find_element(WebTablesPageLocators.ADD, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
 
+    @allure.step("Получить лог")
     def get_logs(self):
         logs = self.find_elements(WebTablesPageLocators.LOGS, 5)
         logs_text = []
@@ -50,15 +55,22 @@ class WebTablesPage(BasePage):
             logs_text.append(x.text)
         return logs_text
 
+    @allure.step("Найти элемент по имени")
     def by_name(self, name: str):
         search = self.find_element(WebTablesPageLocators.SEARCH,5)
         search.click()
         search.send_keys(name)
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
         return search.text
 
+    @allure.step("Удалить добавленные данные")
     def delete_add(self):
         self.find_element(WebTablesPageLocators.DELETE, 5).click()
+        screenshot = self.driver.get_screenshot_as_png()
+        allure.attach(screenshot, name="Screenshot", attachment_type=allure.attachment_type.PNG)
 
+    @allure.step("Получить строки в таблице")
     def get_rows_in_table(self) ->[] :
         try:
             return self.find_elements(WebTablesPageLocators.ROWS_IN_TABLE, 5)

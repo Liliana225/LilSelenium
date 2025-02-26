@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from pages.elementsPage import ElementsPage
@@ -13,6 +14,12 @@ def driverFixture():
     yield driver
     driver.quit()
 
+
+@allure.severity(allure.severity_level.TRIVIAL)
+@allure.epic("Тесты jdi-light")
+@allure.story("Тесты elements")
+@allure.feature("Тесты login")
+@allure.description("Тест проверяет корректность входа в аккаунт")
 def test_login(driverFixture):
     loginpage = LoginPage(driverFixture)
     loginpage.go_to_site()
@@ -22,6 +29,11 @@ def test_login(driverFixture):
     loginpage.switch_to_default()
 
 
+@allure.severity(allure.severity_level.TRIVIAL)
+@allure.epic("Тесты jdi-light")
+@allure.story("Тесты elements")
+@allure.feature("Тесты elements")
+@allure.description("Тест проверяет корректность работы раздела differenrt elements")
 def test_elementsPage(driverFixture):
     elementspage = ElementsPage(driverFixture)
     loginpage = LoginPage(driverFixture)
